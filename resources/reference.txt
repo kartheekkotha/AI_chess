@@ -1,1 +1,5 @@
+We will work on this initial state from down the link and then develop further for the random initialization 
+https://www.chess.com/blog/Pokshtya/6x6-chess-free-choice
 
+- Minimax Algorithm 
+- Alpha-Beta Pruning 
