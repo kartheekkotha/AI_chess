@@ -3,3 +3,8 @@ https://www.chess.com/blog/Pokshtya/6x6-chess-free-choice
 
 - Minimax Algorithm 
 - Alpha-Beta Pruning 
+{
+    - https://www.javatpoint.com/ai-adversarial-search
+    - https://www.javatpoint.com/mini-max-algorithm-in-ai
+    - https://www.javatpoint.com/ai-alpha-beta-pruning 
+}
