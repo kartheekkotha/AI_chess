@@ -1,0 +1,1 @@
+- possibility of loop in two steps while two AI's of same algorithm play chess 

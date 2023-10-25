@@ -1,5 +1,9 @@
+GitHub repo for the course
+    - https://github.com/amancapy/csd311-material/tree/main
+
 We will work on this initial state from down the link and then develop further for the random initialization 
 https://www.chess.com/blog/Pokshtya/6x6-chess-free-choice
+
 
 - Minimax Algorithm 
 - Alpha-Beta Pruning 
@@ -7,4 +11,12 @@ https://www.chess.com/blog/Pokshtya/6x6-chess-free-choice
     - https://www.javatpoint.com/ai-adversarial-search
     - https://www.javatpoint.com/mini-max-algorithm-in-ai
     - https://www.javatpoint.com/ai-alpha-beta-pruning 
+    - https://www.chessprogramming.org/Main_Page
+}
+
+
+--- 
+Useful GitHub Repo's 
+{
+    - https://github.com/mnahinkhan/Chess
 }
