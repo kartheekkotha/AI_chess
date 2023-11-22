@@ -1,0 +1,5 @@
+- check the history to fix the game phase to opening or closing to probability table at evaluation 
+- check the checks and win and loose 
+- check for the stalemate and game over 
+
+- Add the user to only select a white piece to move

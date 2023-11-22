@@ -685,6 +685,7 @@ def findPossibleSquares(position,x,y,AttackSearch=False):
         for tupleq in listofTuples:
             x2 = tupleq[0]
             y2 = tupleq[1]
+     
             temp_pos = position.clone()
             makemove(temp_pos,x,y,x2,y2)
             if not isCheck(temp_pos,color):
@@ -1176,6 +1177,7 @@ def pieceSquareTable(flatboard,gamephase):
             score+=sign*bishop_table[i]
         elif piece=='R':
             score+=sign*rook_table[i]
+    
         elif piece=='Q':
             score+=sign*queen_table[i]
         elif piece=='K':
