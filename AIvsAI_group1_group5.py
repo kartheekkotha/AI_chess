@@ -1805,7 +1805,7 @@ class Generator:
         legal=[]
         str=""
         if(c==0):
-            G=Y.minmax4(T, c, 4, 1,-90000,90000)
+            G=Y.minmax4(T, c, 3, 1,-90000,90000)
             
         else:
             gameState = State()
