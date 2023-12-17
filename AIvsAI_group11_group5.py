@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+import ChessMain as group11
+
+group11.returnStatte()
 """
 Created on Sat Oct 28 09:25:25 2023
 
@@ -201,6 +204,7 @@ class Puzzle:
     def availablePieceMoves(self , stateObj , x , y , choice = 0):
         possiblePositions = []
         currentState = stateObj.get_currentState()
+        
         pieceTomove = currentState[x][y]
         if(pieceTomove== '0'):
             return []
@@ -214,16 +218,16 @@ class Puzzle:
             if(color == "W"):
                 if(y<5 and not stateObj.isOccupied(x,y+1) and choice == 0):
                     possiblePositions.append((x,y+1))
-                if(x!= 0 and y<5 and stateObj.isOccupied(x-1,y+1,"B") ):
+                if(x!= 0 and stateObj.isOccupied(x-1,y+1,"B")):
                     possiblePositions.append((x-1,y+1))
-                if(x!= 5 and y<5 and stateObj.isOccupied(x+1,y+1,"B")):
+                if(x!= 5 and stateObj.isOccupied(x+1,y+1,"B")):
                     possiblePositions.append((x+1,y+1))
             else:
                 if(y>2 and not stateObj.isOccupied(x,y-1) and choice == 0):
                     possiblePositions.append((x,y-1))
-                if(x!= 0 and y >= 1 and stateObj.isOccupied(x-1,y-1,"W")):
+                if(x!= 0 and stateObj.isOccupied(x-1,y-1,"W")):
                     possiblePositions.append((x-1,y-1))
-                if(x!= 5 and y>=1 and stateObj.isOccupied(x+1,y-1,"W")):
+                if(x!= 5 and stateObj.isOccupied(x+1,y-1,"W")):
                     possiblePositions.append((x+1,y-1))
         #possible next squares for the rook(Elepant:) ) piece to move     
         elif(pieceTomove == 'R'):
@@ -357,12 +361,12 @@ class Heuristic:
 #     FinalState = stateNew.get_finalState()
 
     def __init__(self):
-            self.pawn_table = [  -10, 50, 10,  5,  0,  5,
-                                          -10, 50, 10,  5,  0, -5,
-                                          -10, 50, 20, 10,  0, -10,
-                                          -10, 50, 30, 25, 20,  0,
-                                          -10, 50, 30, 25, 20,  0,
-                                          -10, 50, 20, 10,  0, -10]
+            self.pawn_table = [  0, 50, 10,  5,  0,  5,
+                                          0, 50, 10,  5,  0, -5,
+                                          0, 50, 20, 10,  0, -10,
+                                          0, 50, 30, 25, 20,  0,
+                                          0, 50, 30, 25, 20,  0,
+                                          0, 50, 20, 10,  0, -10]
             self.knight_table = [-50, -40, -30, -30, -40, -50,
                                                 -40, -20,   0,   5, -20, -90,
                                                 -30,   0,  10,  15,   0, -30,
@@ -531,7 +535,7 @@ class Heuristic:
       Iw = self.isolatedPawns(presentState,'white')
       Ib = self.isolatedPawns(presentState,'black')
       #Evaluate position based on above data:
-      evaluation1 = 900*(C_WQ - C_BQ) + 500*(C_WR - C_BR) +400*(C_WK - C_BK) +150*(C_WP- C_BP ) +-30*(Dw-Db + Sw-Sb + Iw- Ib)
+      evaluation1 = 900*(C_WQ - C_BQ) + 500*(C_WR - C_BR) +320*(C_WK - C_BK) +100*(C_WP- C_BP ) +-30*(Dw-Db + Sw-Sb + Iw- Ib)
       #Evaluate position based on piece square tables:
       evaluation2 = self.pieceSquareTable(flatboard,gamephase)
       #Sum the evaluations:
@@ -1990,6 +1994,73 @@ def group5ToGroup1(state):
     arr = arr.tolist()
     return arr
 """
+
+def group11ToGroup5(state):
+    converted_state = [["0" for _ in range(6)] for _ in range(6)]
+
+    for i in range(len(state)):
+        for j in range(len(state[i])):
+            if state[j][i] == "bR":
+                converted_state[i][j] = "BR"
+            elif state[j][i] == "bN":
+                converted_state[i][j] = "BK"
+            elif state[j][i] == "bQ":
+                converted_state[i][j] = "BQ"
+            elif state[j][i] == "bK":
+                converted_state[i][j] = "BKi"
+            elif state[j][i] == "bp":
+                converted_state[i][j] = "BP"
+            elif state[j][i] == "wR":
+                converted_state[i][j] = "WR"
+            elif state[j][i] == "wN":
+                converted_state[i][j] = "WK"
+            elif state[j][i] == "wQ":
+                converted_state[i][j] = "WQ"
+            elif state[j][i] == "wK":
+                converted_state[i][j] = "WKi"
+            elif state[j][i] == "wp":
+                converted_state[i][j] = "WP"
+            elif state[j][i] == "--":
+                converted_state[i][j] = "0"
+    c1 = converted_state
+    for i in range(len(state)):
+        c1[i] = c1[i][::-1]
+    return c1
+
+
+def group5ToGroup11(state):
+    converted_state = [["0" for _ in range(6)] for _ in range(6)]
+
+    for i in range(len(state)):
+        for j in range(len(state[i])):
+            if state[i][j] == "BR":
+                converted_state[j][i] = "bR"
+            elif state[i][j] == "BK":
+                converted_state[j][i] = "bN"
+            elif state[i][j] == "BQ":
+                converted_state[j][i] = "bQ"
+            elif state[i][j] == "BKi":
+                converted_state[j][i] = "bK"
+            elif state[i][j] == "BP":
+                converted_state[j][i] = "bp"
+            elif state[i][j] == "WR":
+                converted_state[j][i] = "wR"
+            elif state[i][j] == "WK":
+                converted_state[j][i] = "wN"
+            elif state[i][j] == "WQ":
+                converted_state[j][i] = "wQ"
+            elif state[i][j] == "WKi":
+                converted_state[j][i] = "wK"
+            elif state[i][j] == "WP":
+                converted_state[j][i] = "wp"
+            elif state[i][j] == "0":
+                converted_state[j][i] = "--"
+
+    c1 = converted_state
+    c1 = c1[::-1]
+
+    return c1
+
 def group1ToGroup5(state):
     converted_state = [['0' for _ in range(6)] for _ in range(6)]
     
