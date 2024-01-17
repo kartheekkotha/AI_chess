@@ -16,5 +16,6 @@ This project aims to create a unique chess experience on a 6x6 board. The game f
 ### Prerequisites
 
 Make sure you have Python installed on your system. The code is designed to run on Python 3.
+And the UI is based on pygame
 
 
